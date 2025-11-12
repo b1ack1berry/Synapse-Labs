@@ -1,0 +1,1 @@
+Logs for Synapse bot. New entries will be appended here by the running app.
