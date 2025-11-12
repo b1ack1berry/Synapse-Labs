@@ -59,7 +59,7 @@ async def generate_reply(prompt: str) -> str:
 
 
 @app.post("/webhook")
-async def webhook(update: UpdateModel):
+async def webhook(update: Request):
     # Handle different update types; we only reply to standard messages.
     msg = update.message or update.edited_message
     if not msg:
