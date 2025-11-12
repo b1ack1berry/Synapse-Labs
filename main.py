@@ -6,19 +6,18 @@ from pydantic import BaseModel
 from typing import Optional
 from dotenv import load_dotenv
 
-# Загружаем переменные окружения из файла .env
-load_dotenv()
+load_dotenv()  # Загружаем переменные окружения
 
 # Конфигурационные переменные
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_WEBHOOK_URL = os.getenv("TELEGRAM_WEBHOOK_URL")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo")
-MAX_TOKENS = int(os.getenv("MAX_TOKENS", 512))  # Максимальное количество токенов
-TIMEOUT = int(os.getenv("TIMEOUT", 30))  # Таймаут для запросов
+MAX_TOKENS = int(os.getenv("MAX_TOKENS", 512))
+TIMEOUT = int(os.getenv("TIMEOUT", 30))
 
 if not TELEGRAM_TOKEN or not OPENAI_API_KEY:
-    raise RuntimeError("Необходимые переменные окружения TELEGRAM_TOKEN и OPENAI_API_KEY отсутствуют. См. пример .env.")
+    raise RuntimeError("Необходимые переменные окружения TELEGRAM_TOKEN и OPENAI_API_KEY отсутствуют.")
 
 # Инициализация FastAPI
 app = FastAPI(title="Synapse Telegram Webhook (FastAPI)")
